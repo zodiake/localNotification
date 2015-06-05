@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0" id="org.zodiake.LocalNotificationPlugin" version="1.0.0">
+    <name>ServerPush</name>
+    <description>Stupid LocalNotificationPlugin</description>
+    <author>zodiake</author>
+    <keywords>LocalNotificationPlugin</keywords>
+    <license>MIT</license>
+    <js-module src="www/LocalNotificationPlugin.js" name="LocalNotificationPlugin">
+        <clobbers target="cordova.plugins.localNotify" />
+    </js-module>
+    <!-- android -->
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="LocalNotificationPlugin">
+                <param name="android-package" value="com.zodiake.app.LocalNotificationPlugin" />
+            </feature>
+        </config-file>
+        <config-file target="AndroidManifest.xml" parent="/*">
+            <uses-permission android:name="android.permission.WAKE_LOCK" />
+        </config-file>
+        <source-file src="src/LocalNotificationPlugin.java" target-dir="src/com/zodiake/plugin" />
+    </platform>
+</plugin>
